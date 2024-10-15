@@ -15,20 +15,21 @@ typedef struct elementTree
 	struct elementTree  *leftElementTree;
 }t_ElementTree;
 
-t_ElementTree 			        			       *elementTree_create(void *data,int sizeofData);
-BOOL 								       ElementTree_Delete(t_ElementTree *elementTree);
+t_ElementTree 			        	 *elementTree_create(void *data,int sizeofData);
+BOOL 						 ElementTree_Delete(t_ElementTree *elementTree);
 
-void 	       				      	     		    *elementTree_Get_Data(t_ElementTree *elementTree);
-int 	       				      	     		    elementTree_Get_SizeofData(t_ElementTree *elementTree);
-t_ElementTree  				               		    *elementTree_Get_RightElement(t_ElementTree *elementTree);
-t_ElementTree   				       	      		     *elementTree_Get_LeftElement(t_ElementTree *elementTree);
+void 	       				      *elementTree_Get_Data(t_ElementTree *elementTree);
+int 	       				 elementTree_Get_SizeofData(t_ElementTree *elementTree);
+t_ElementTree  		  	      *elementTree_Get_RightElement(t_ElementTree *elementTree);
+t_ElementTree   		       *elementTree_Get_LeftElement(t_ElementTree *elementTree);
 
-BOOL    	 	      elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
-BOOL	     		   elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
 
-void 									 elementTree_Dump(t_ElementTree *elementTree);
-//====================================================================================================================
-t_ElementTree 			        				*elementTree_create(void *data,int sizeofData)
+BOOL    elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
+BOOL elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
+
+void 					 	   elementTree_Dump(t_ElementTree *elementTree);
+//==============================================================================================
+t_ElementTree 			        	  *elementTree_create(void *data,int sizeofData)
 {
 	t_ElementTree *newElement;
 	
@@ -55,8 +56,8 @@ t_ElementTree 			        				*elementTree_create(void *data,int sizeofData)
 	printf("elemento criado\n");	
 	return newElement;
 }
-//====================================================================================================================
-BOOL 							elementTree_Delete(t_ElementTree *elementTree)
+//==============================================================================================
+BOOL 						  elementTree_Delete(t_ElementTree *elementTree)
 {
 	if(elementTree==NULL)
 	{
@@ -68,8 +69,8 @@ BOOL 							elementTree_Delete(t_ElementTree *elementTree)
 	printf("elemento deletado\n");
 	return TRUE;
 }
-//====================================================================================================================
-void 	       				      	     *elementTree_Get_Data(t_ElementTree *elementTree)
+//==============================================================================================
+void 	       				       *elementTree_Get_Data(t_ElementTree *elementTree)
 {
 	if(elementTree==NULL)
 	{
@@ -78,8 +79,8 @@ void 	       				      	     *elementTree_Get_Data(t_ElementTree *elementTree)
 	}
 	return elementTree->adressData;
 }
-//====================================================================================================================
-int 	       				      	     		    elementTree_Get_SizeofData(t_ElementTree *elementTree)
+//==============================================================================================
+int 	       				  elementTree_Get_SizeofData(t_ElementTree *elementTree)
 {	
 	if(elementTree==NULL)
 	{
@@ -88,8 +89,8 @@ int 	       				      	     		    elementTree_Get_SizeofData(t_ElementTree *elem
 	}
 	return elementTree->sizeofData;
 }
-//====================================================================================================================
-t_ElementTree  				             *elementTree_Get_RightElement(t_ElementTree *elementTree)
+//==============================================================================================
+t_ElementTree  			       *elementTree_Get_RightElement(t_ElementTree *elementTree)
 {
 	if(elementTree==NULL)
 	{
@@ -98,8 +99,8 @@ t_ElementTree  				             *elementTree_Get_RightElement(t_ElementTree *ele
 	}
 	return elementTree->rightElementTree;
 }
-//====================================================================================================================
-t_ElementTree   				       	      *elementTree_Get_LeftElement(t_ElementTree *elementTree)
+//==============================================================================================
+t_ElementTree   		 	*elementTree_Get_LeftElement(t_ElementTree *elementTree)
 {
 	if(elementTree==NULL)
 	{
@@ -108,8 +109,8 @@ t_ElementTree   				       	      *elementTree_Get_LeftElement(t_ElementTree *el
 	}
 	return elementTree->leftElementTree;
 }
-//====================================================================================================================
-BOOL    	elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd)
+//==============================================================================================
+BOOL     elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd)
 {
 	if(elementTree==NULL)
 	{
@@ -124,8 +125,8 @@ BOOL    	elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *
 	elementTree->rightElementTree=elemetTreeToAdd;
 	return TRUE;
 }
-//====================================================================================================================
-BOOL	     elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd)
+//==============================================================================================
+BOOL  elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd)
 {
 	if(elementTree==NULL)
 	{
@@ -140,8 +141,8 @@ BOOL	     elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTr
 	elementTree->leftElementTree=elemetTreeToAdd;
 	return TRUE;
 }
-//====================================================================================================================
-void 									 elementTree_Dump(t_ElementTree *elementTree)
+//==============================================================================================
+void 						    elementTree_Dump(t_ElementTree *elementTree)
 {
 	if(elementTree==NULL)
 	{

@@ -15,15 +15,17 @@ typedef struct elementTree
 }t_ElementTree;
 
 t_ElementTree 			        			       *elementTree_create(void *data,int sizeofData);
-BOOL 							ElementTree_Delete(t_ElementTree *elementTree);
+BOOL 								       ElementTree_Delete(t_ElementTree *elementTree);
 
-void 	       				      	     *elementTree_Get_Data(t_ElementTree *ElementTree);
-void  				             *elementTree_Get_RightElement(t_ElementTree *ElementTree);
-void   				       	      *elementTree_Get_LeftElement(t_ElementTree *ElementTree);
+void 	       				      	     		    *elementTree_Get_Data(t_ElementTree *ElementTree);
+void  				               		    *elementTree_Get_RightElement(t_ElementTree *ElementTree);
+void   				       	      		     *elementTree_Get_LeftElement(t_ElementTree *ElementTree);
 
-BOOL    	elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
-BOOL	     elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
-//=====================================================================================================
+BOOL    	 	      elementTree_Add_RightElement(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
+BOOL	     		   elementTree_Add_LeftElementTree(t_ElementTree *elementTree,t_ElementTree *elemetTreeToAdd);
+
+void 									 elementTree_Dump(t_ElementTree *elementTree);
+//====================================================================================================================
 t_ElementTree 			        				*elementTree_create(void *data,int sizeofData)
 {
 	t_ElementTree *newElement;

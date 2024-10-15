@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "elementTree.h"
+#include "binaryTree.h"
 
 
 int main()
 {
+/*
 	t_ElementTree *element;    
 	t_ElementTree *element2;    
 	t_ElementTree *element3;    
@@ -25,6 +26,7 @@ int main()
 	//dataDump(elementTree_Get_Data(element->leftElementTree),sizeof(element3->sizeofData));
 	elementTree_Dump(element);
 	
-	
+*/	
+	t_BinaryTree *binaryTree=
 }
 

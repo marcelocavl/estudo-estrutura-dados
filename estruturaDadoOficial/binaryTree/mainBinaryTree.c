@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include<string.h>
 #include "elementTree.h"
-#include "functions_Show.h"
 
 
 int main()
@@ -22,8 +21,9 @@ int main()
 	
 	elementTree_Add_RightElement(element,element2);
 	elementTree_Add_LeftElementTree(element,element3);
-	dataDump(elementTree_Get_Data(element->rightElementTree),sizeof(element3->sizeofData));
-	dataDump(elementTree_Get_Data(element->leftElementTree),sizeof(element3->sizeofData));
+	//dataDump(elementTree_Get_Data(element->rightElementTree),sizeof(element3->sizeofData));
+	//dataDump(elementTree_Get_Data(element->leftElementTree),sizeof(element3->sizeofData));
+	elementTree_Dump(element);
 	
 	
 }

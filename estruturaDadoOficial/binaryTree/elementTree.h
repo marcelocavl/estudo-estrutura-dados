@@ -72,11 +72,12 @@ BOOL 						  elementTree_Delete(t_ElementTree *elementTree)
 //==============================================================================================
 void 	       				       *elementTree_Get_Data(t_ElementTree *elementTree)
 {
+	
 	if(elementTree==NULL)
 	{
-		printf("elementTree igual a NULL\n");
 		return NULL;
-	}
+	}	
+	
 	return elementTree->adressData;
 }
 //==============================================================================================
@@ -149,12 +150,29 @@ void 						    elementTree_Dump(t_ElementTree *elementTree)
 		printf("erro ao printar o elemento\n");
 		return;
 	}
-	printf("DADO DO ELEMENTO:\n");	
+	printf("DADO DO ELEMENTO:\n");
+	if(elementTree_Get_Data(elementTree)==NULL)
+	{
+		printf("NULL\n");	
+	}
 	dataDump(elementTree_Get_Data(elementTree),elementTree_Get_SizeofData(elementTree));
 	printf("DADO DO ELEMENTO DIREITO:\n");	
-	dataDump(elementTree_Get_Data(elementTree->rightElementTree),elementTree_Get_SizeofData(elementTree));
+	if(elementTree_Get_Data(elementTree->rightElementTree)==NULL)
+	{
+		printf("NULL\n");	
+	}else
+	{
+		dataDump(elementTree_Get_Data(elementTree->rightElementTree),elementTree_Get_SizeofData(elementTree));
+	}
+
 	printf("DADO DO ELEMENTO ESQUERDO:\n");	
+	if(elementTree_Get_Data(elementTree->leftElementTree)==NULL)
+	{
+		printf("NULL\n");	
+	}else
+	{
 	dataDump(elementTree_Get_Data(elementTree->leftElementTree),elementTree_Get_SizeofData(elementTree));
+	}	
 	printf("=================================================================\n");	
 	return;
 }

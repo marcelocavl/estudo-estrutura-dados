@@ -27,6 +27,26 @@ int main()
 	elementTree_Dump(element);
 	
 */	
-	t_BinaryTree *binaryTree=
+	int x=12;
+	t_BinaryTree *binaryTree=binaryTree_Create(&x,sizeof(int));
+	int y=13;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&y,sizeof(int));
+	int z=10;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&z,sizeof(int));
+	int j=1;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+	j=11;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+	j=14;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+
+	t_ElementTree *test=elementTree_Get_RightElement(binaryTree->rootElement);
+	t_ElementTree *test2=elementTree_Get_LeftElement(binaryTree->rootElement);
+	elementTree_Dump(binaryTree->rootElement);
+	elementTree_Dump(test);
+	elementTree_Dump(test2);
+printf("%d\n",binaryTree->numElements);	
+		
+
 }
 

@@ -15,71 +15,96 @@ typedef struct binaryTree
 	int 	       numElements;
 }t_BinaryTree;
 
-t_BinaryTree *binaryTree_Create();
+t_BinaryTree *binaryTree_Create(void *rootValue,int rootSize);
 void binaryTree_Delete(t_BinaryTree *binaryTree);
+	
+t_ElementTree *binaryTree_Get_RootElement(t_BinaryTree *binaryTree);
+void binaryTree_Get_NumElements(t_BinaryTree *binaryTree);
 
-void binaryTree_Add(t_BinaryTree *binaryTree,void *data);
+void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data,int sizeofData);
 void binaryTree_Remove(t_BinaryTree *binaryTree,void *data);
 
 //==============================================================================================
-t_BinaryTree *binaryTree_Create()
+t_BinaryTree *binaryTree_Create(void *rootValue,int rootSize)
 {
 	t_BinaryTree *newBinaryTree;
-	if((newBinaryTree=malloc(sizeof(t_BinaryTree)))
+	if((newBinaryTree=malloc(sizeof(t_BinaryTree)))==NULL)
 	{
 		printf("erro ao criar a binaryTree\n");
 		return NULL;
 	}
-	newBinaryTree->rootElement=NULL;
-	newBinaryTree->numElements=0;
+	if((newBinaryTree->rootElement=elementTree_create(rootValue,rootSize))==NULL)
+	{
+		printf("erro ao criar a binaryTree\n");
+		return NULL;
+	}
+	newBinaryTree->numElements=1;
+	printf("sucesso ao criar binary tree\n");	
 	return newBinaryTree;
 }
 //==============================================================================================
 void binaryTree_Delete(t_BinaryTree *binaryTree);
 //==============================================================================================
-void binaryTree_Add(t_ElementTree *rootElement,void *data,int sizeofData)
+t_ElementTree *binaryTree_Get_RootElement(t_BinaryTree *binaryTree)
 {
-	if(rootElement==NULL)
+
+	if(binaryTree=NULL)
 	{
-		printf("root element igual a NULL\n");
-		return;
-	}	
+		printf("binaryTree igual a NULL\n");	
+		return NULL;
+	}
+	if(binaryTree->rootElement==NULL)
+	{
+		printf("root element iguaL a NULL\n");	
+		return NULL;
+	}
+	return binaryTree->rootElement;
+
+}
+//==============================================================================================
+void binaryTree_Get_NumElements(t_BinaryTree *binaryTree);
+//==============================================================================================
+void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data,int sizeofData)
+{
+
+	printf("entrei aqui\n");
 	if(data==NULL)
 	{
 		printf("data igual a NULL");
 		return;
 	}	
+
 	t_ElementTree *element=elementTree_create(data,sizeofData);
 	if(element==NULL)
 	{
 		printf("erro ao alocar elemento\n" );
 		return;
 	}
-	
+
 	if((memcmp(elementTree_Get_Data(element),elementTree_Get_Data(rootElement),elementTree_Get_SizeofData(element)))>0 && (elementTree_Get_RightElement(rootElement))==NULL)
 	{
 		rootElement->rightElementTree=element;
+		binaryTree->numElements++;
 		return;
 	}
 	
 	if((memcmp(elementTree_Get_Data(element),elementTree_Get_Data(rootElement),elementTree_Get_SizeofData(element)))<0 && (elementTree_Get_LeftElement(rootElement))==NULL)
 
 	{
-		rootElement->rightElementTree=element;
+		rootElement->leftElementTree=element;
+		binaryTree->numElements++;
 		return;
 	}
 	if((memcmp(elementTree_Get_Data(element),elementTree_Get_Data(rootElement),elementTree_Get_SizeofData(element)))>0)
 	{	
-		binaryTree_Add(elementTree_Get_RightElement(rootElement),data,sizeofData);	
+		binaryTree_Add(binaryTree,elementTree_Get_RightElement(rootElement),data,sizeofData);	
 	}
 	
-	if((memcmp(elementTree_Get_Data(element),elementTree_Get_Data(rootElement),elementTree_Get_SizeofData(element)))>0)
+	if((memcmp(elementTree_Get_Data(element),(elementTree_Get_Data(rootElement)),elementTree_Get_SizeofData(element)))<0)
 	{	
-		binaryTree_Add(elementTree_Get_RightElement(rootElement),data,sizeofData);	
+		binaryTree_Add(binaryTree,elementTree_Get_LeftElement(rootElement),data,sizeofData);	
 	}
 	return;
-
-
 
 
 }

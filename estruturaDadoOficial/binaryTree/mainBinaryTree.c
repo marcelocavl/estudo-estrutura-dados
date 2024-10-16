@@ -33,11 +33,11 @@ int main()
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&y,sizeof(int));
 	int z=10;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&z,sizeof(int));
-	int j=1;
+	int j=11;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
-	j=11;
+	j=1;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
-	j=14;
+	j=15;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
 /*
 	t_ElementTree *test=elementTree_Get_RightElement(binaryTree->rootElement);
@@ -46,8 +46,10 @@ int main()
 	elementTree_Dump(test);
 	elementTree_Dump(test2);
 */
-	binaryTree_Dump(binaryTree,binaryTree->rootElement);
+	j=10;
 	printf("%d\n",binaryTree->numElements);	
+	t_ElementTree *test=binaryTree_Search_penultimate(binaryTree,binaryTree->rootElement,&j);
+	elementTree_Dump(test);
 		
 
 }

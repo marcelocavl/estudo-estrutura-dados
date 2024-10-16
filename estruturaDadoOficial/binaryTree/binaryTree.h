@@ -22,6 +22,7 @@ BOOL binaryTree_Is_leaf(t_ElementTree *elementTree);
 	
 t_ElementTree *binaryTree_Get_RootElement(t_BinaryTree *binaryTree);
 void binaryTree_Get_NumElements(t_BinaryTree *binaryTree);
+t_ElementTree *binaryTree_Search_penultimate(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data);
 
 void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data,int sizeofData);
 void binaryTree_Remove(t_BinaryTree *binaryTree,void *data);
@@ -123,7 +124,56 @@ void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *da
 
 }
 //==============================================================================================
-void binaryTree_Remove(t_BinaryTree *binaryTree,void *data);
+t_ElementTree *binaryTree_Search_penultimate(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data)
+{
+	if(binaryTree==NULL){
+		printf("binaryTree igual a NULL\n");	
+		return NULL;
+	}	
+	if(rootElement->rightElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement->rightElementTree),data,elementTree_Get_SizeofData(rootElement->rightElementTree))==0){
+		return rootElement;
+	}
+	if(rootElement->leftElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement->leftElementTree),data,elementTree_Get_SizeofData(rootElement->leftElementTree))==0){
+		return rootElement;
+	}
+	if(rootElement->rightElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement),data,elementTree_Get_SizeofData(rootElement->rightElementTree))<0){
+		return binaryTree_Search_penultimate(binaryTree,rootElement->rightElementTree,data);
+	}	
+	if(rootElement->leftElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement),data,elementTree_Get_SizeofData(rootElement->leftElementTree))>0){
+		return binaryTree_Search_penultimate(binaryTree,rootElement->leftElementTree,data);
+	}
+// OUTRA FORMA DE BUSCAR PELO PAI DE UM ELEMENTO QUE O USUARIO DESEJE DELETAR, EVITANDO A LÓGICA DE MAIOR OU MENOR NOS CONDICIONAIS.
+/*
+	t_ElementTree *target;
+	if(binaryTree==NULL){
+		printf("binaryTree igual a NULL\n");	
+		return NULL;
+	}	
+	if(binaryTree_Is_leaf(rootElement)){
+		return rootElement;
+	}
+	if(rootElement->rightElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement->rightElementTree),data,elementTree_Get_SizeofData(rootElement->rightElementTree))==0){
+		return rootElement;
+	}
+	if(rootElement->leftElementTree!=NULL && memcmp(elementTree_Get_Data(rootElement->leftElementTree),data,elementTree_Get_SizeofData(rootElement->leftElementTree))==0){
+		return rootElement;
+	}
+	
+	if(rootElement->rightElementTree!=NULL){
+		 target=binaryTree_Search_penultimate(binaryTree,rootElement->rightElementTree,data);
+	
+		if(!binaryTree_Is_leaf(target)){
+			return target;
+		}
+	}	
+	if(rootElement->leftElementTree!=NULL){
+		target=binaryTree_Search_penultimate(binaryTree,rootElement->leftElementTree,data);	
+		if(!binaryTree_Is_leaf(target)){
+			return target;
+		}
+	}
+*/
+}
 //==============================================================================================
 void binaryTree_Dump(t_BinaryTree *binaryTree,t_ElementTree *rootElement)
 {

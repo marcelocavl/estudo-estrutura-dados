@@ -25,7 +25,7 @@ void binaryTree_Get_NumElements(t_BinaryTree *binaryTree);
 t_ElementTree *binaryTree_Search_penultimate(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data);
 
 void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *data,int sizeofData);
-void binaryTree_Remove(t_BinaryTree *binaryTree,void *data);
+void binaryTree_Remove(t_BinaryTree *binaryTree,void *data,t_ElementTree *elementToDelete);
 
 //==============================================================================================
 t_BinaryTree *binaryTree_Create(void *rootValue,int rootSize)
@@ -120,6 +120,52 @@ void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *da
 		binaryTree_Add(binaryTree,elementTree_Get_LeftElement(rootElement),data,sizeofData);	
 	}
 	return;
+
+
+}
+//==============================================================================================
+void binaryTree_Remove_Node(t_BinaryTree *binaryTree,void *data)
+{	
+	if(binaryTree==NULL){
+		printf("arvore binaria igual a NULL\n");	
+		return;
+	}
+	if(data==NULL){
+		printf("data igual a NULL\n");	
+		return;
+	}
+	t_ElementTree *fatherOfElementToDelete=binaryTree_Search_penultimate(binaryTree,binaryTree->rootElement,data);
+	elementTree_Dump(fatherOfElementToDelete);
+	if(memcmp(fatherOfElementToDelete->rightElementTree,data,sizeof(fatherOfElementToDelete)==0){	
+		binaryTree_Remove(binaryTree,data,fatherOfElementToDelete->rightElementTree);	
+	
+	}
+
+	binaryTree_Remove(binaryTree,data,fatherOfElementToDelete->);
+	return;
+}
+//==============================================================================================
+
+void binaryTree_Remove(t_BinaryTree *binaryTree,void *data,t_ElementTree *elementToDelete)
+{
+	if(binaryTree==NULL){
+		printf("arvore binaria igual a NULL\n");	
+		return;
+	}
+	if(data==NULL){
+		printf("data igual a NULL\n");	
+		return;
+	}
+	if(binaryTree_Is_leaf(elementToDelete)){
+		elementTree_Delete(elementToDelete);
+		return;
+	}	
+	if(elementToDelete->rightElementTree!=NULL){
+		binaryTree_Remove(binaryTree,data,elementToDelete->rightElementTree);
+	}
+	if(elementToDelete->leftElementTree!=NULL){
+		binaryTree_Remove(binaryTree,data,elementToDelete->leftElementTree);
+	}
 
 
 }

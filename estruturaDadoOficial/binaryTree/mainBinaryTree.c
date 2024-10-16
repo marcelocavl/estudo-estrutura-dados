@@ -39,13 +39,15 @@ int main()
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
 	j=14;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
-
+/*
 	t_ElementTree *test=elementTree_Get_RightElement(binaryTree->rootElement);
 	t_ElementTree *test2=elementTree_Get_LeftElement(binaryTree->rootElement);
 	elementTree_Dump(binaryTree->rootElement);
 	elementTree_Dump(test);
 	elementTree_Dump(test2);
-printf("%d\n",binaryTree->numElements);	
+*/
+	binaryTree_Dump(binaryTree,binaryTree->rootElement);
+	printf("%d\n",binaryTree->numElements);	
 		
 
 }

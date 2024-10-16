@@ -17,6 +17,8 @@ typedef struct binaryTree
 
 t_BinaryTree *binaryTree_Create(void *rootValue,int rootSize);
 void binaryTree_Delete(t_BinaryTree *binaryTree);
+
+BOOL binaryTree_Is_leaf(t_ElementTree *elementTree);
 	
 t_ElementTree *binaryTree_Get_RootElement(t_BinaryTree *binaryTree);
 void binaryTree_Get_NumElements(t_BinaryTree *binaryTree);
@@ -44,6 +46,18 @@ t_BinaryTree *binaryTree_Create(void *rootValue,int rootSize)
 }
 //==============================================================================================
 void binaryTree_Delete(t_BinaryTree *binaryTree);
+//==============================================================================================
+BOOL binaryTree_Is_leaf(t_ElementTree *elementTree)
+{
+	if(elementTree==NULL){
+		printf("elemento igual a NULL\n");	
+		return FALSE;
+	}
+	if(elementTree->rightElementTree==NULL && elementTree->leftElementTree==NULL){
+		return TRUE;		
+	}
+	return FALSE;
+}
 //==============================================================================================
 t_ElementTree *binaryTree_Get_RootElement(t_BinaryTree *binaryTree)
 {
@@ -111,5 +125,23 @@ void binaryTree_Add(t_BinaryTree *binaryTree,t_ElementTree *rootElement,void *da
 //==============================================================================================
 void binaryTree_Remove(t_BinaryTree *binaryTree,void *data);
 //==============================================================================================
-void binaryTree_Dump(t_BinaryTree *binaryTree);
+void binaryTree_Dump(t_BinaryTree *binaryTree,t_ElementTree *rootElement)
+{
+	if(binaryTree==NULL){
+		printf("erro ao printar árvore\n");		
+		return;
+	}
+	if(binaryTree_Is_leaf(rootElement)){
+		elementTree_Dump(rootElement);
+		return;
+	}
+	elementTree_Dump(rootElement);
+	if(rootElement->rightElementTree!=NULL){
+		binaryTree_Dump(binaryTree,rootElement->rightElementTree);
+	}
+	if(rootElement->leftElementTree!=NULL){
+		binaryTree_Dump(binaryTree,rootElement->leftElementTree);
+	}
+	return;
+}
 //==============================================================================================

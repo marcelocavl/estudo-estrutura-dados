@@ -136,13 +136,22 @@ void binaryTree_Remove_Node(t_BinaryTree *binaryTree,void *data)
 	}
 	t_ElementTree *fatherOfElementToDelete=binaryTree_Search_penultimate(binaryTree,binaryTree->rootElement,data);
 	elementTree_Dump(fatherOfElementToDelete);
-	if(memcmp(fatherOfElementToDelete->rightElementTree,data,sizeof(fatherOfElementToDelete)==0){	
+	if(memcmp(elementTree_Get_Data(fatherOfElementToDelete->rightElementTree),data,elementTree_Get_SizeofData(fatherOfElementToDelete))==0){	
+		printf("entrei here\n");	
 		binaryTree_Remove(binaryTree,data,fatherOfElementToDelete->rightElementTree);	
-	
+		fatherOfElementToDelete->rightElementTree=NULL;
+		return;
+	}
+	if(memcmp(elementTree_Get_Data(fatherOfElementToDelete->leftElementTree),data,elementTree_Get_SizeofData(fatherOfElementToDelete))==0){	
+		printf("entrei here\n");	
+		binaryTree_Remove(binaryTree,data,fatherOfElementToDelete->leftElementTree);	
+		fatherOfElementToDelete->leftElementTree=NULL;
+		return;
+
 	}
 
-	binaryTree_Remove(binaryTree,data,fatherOfElementToDelete->);
-	return;
+
+
 }
 //==============================================================================================
 
@@ -166,7 +175,7 @@ void binaryTree_Remove(t_BinaryTree *binaryTree,void *data,t_ElementTree *elemen
 	if(elementToDelete->leftElementTree!=NULL){
 		binaryTree_Remove(binaryTree,data,elementToDelete->leftElementTree);
 	}
-
+	elementTree_Delete(elementToDelete);
 
 }
 //==============================================================================================

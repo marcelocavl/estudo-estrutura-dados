@@ -14,9 +14,16 @@ int main()
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&z,sizeof(int));
 	int j=11;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
-	j=1;
+	j=14;
 	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
-	j=10;
+	j=8;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+	j=9;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+	j=15;
+	binaryTree_Add(binaryTree,(binaryTree->rootElement),&j,sizeof(int));
+	
+	j=15;
 	
 	binaryTree_Remove_Node(binaryTree,&j);
 	binaryTree_Dump(binaryTree,binaryTree->rootElement);

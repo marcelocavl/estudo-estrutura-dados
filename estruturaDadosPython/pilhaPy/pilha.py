@@ -4,9 +4,7 @@ class Pilha:
 	def __init__(self,rootElement):
 		self.rootElement=rootElement
 		self.currentElement=rootElement
-		self.numElements=1
-		return
-
+		self.numElement=1
 	def pilha_Get_RootElement(self):
 		return self.rootElement
 
@@ -16,10 +14,9 @@ class Pilha:
 	def pilha_Go_To_Root_Element(self):
 		self.currentElement=self.rootElement
 		return
-
-	def pilha_Go_To_Second_Element(self):
-		self.pilha_Go_To_Root_Element()	
-		self.currentElement=self.currentElement.prox
+	def pilha_Go_To_Penultime_Element(self):
+		self.pilha_Go_To_Last_Element()
+		self.pilha_Go_To_Father_Of_Element(self.currentElement)
 		return	
 	
 	def pilha_Go_To_Last_Element(self):
@@ -27,11 +24,17 @@ class Pilha:
 		while self.currentElement.prox != None:
 			self.currentElement=self.currentElement.prox	
 		return	
+	def pilha_Go_To_Father_Of_Element(self,elementTarget):
+		self.pilha_Go_To_Root_Element()
+		while self.currentElement.prox != elementTarget:
+			self.currentElement=self.currentElement.prox
+		return self.currentElement
 
 	def pilha_Alocate(self,elementToAlocate):
 		self.pilha_Go_To_Last_Element()
 		self.currentElement.prox=elementToAlocate
 		return
+
 	def pilha_Print(self):
 		self.pilha_Go_To_Root_Element()
 		while self.currentElement.prox != None:
@@ -41,7 +44,7 @@ class Pilha:
 		return
 
 	def pilha_Delete(self):	
-		self.pilha_Go_To_Second_Element()
-		self.rootElement=self.currentElement
+		self.pilha_Go_To_Penultime_Element()
+		self.currentElement.prox=None
 		return
 

@@ -37,6 +37,27 @@ class ArvoreBinaria:
 			print("||||||||||||||||||||||||||||||||||||||||||||||||||")
 			self.arvoreBinaria_Print(elementRoot.leftElementTree)
 	
+	def arvoreBinaria_Delete_Node(self,element):
+		elementFather=arvoreBinaria_Search_For_father(element,self.rootElement)
+		arvoreBinaria_Delete(element,elementFather)
+		
+	def arvoreBinaria_Delete(self,element,rootElement):
+		
+		
+			
+		
+		
+
+	def arvoreBinaria_Search_For_father(self,element,rootElement):
+		if(element.elementTree_Get_Value()==rootElement.rightElementTree().elementTree_Get_Value()):
+			return rootElement
+		if(element.elementTree_Get_Value()==rootElement.leftElementTree().elementTree_Get_Value()):
+			return rootElement
+		if(element.elementTree_Get_Value()<rootElement.elementTree_Get_LeftElementTree() and rootElement.leftElementTree!=None):
+			arvoreBinaria_Search_For_father(element,rootElement.leftElementTree)
+		if(element.elementTree_Get_Value()>rootElement.elementTree_Get_LeftElementTree() and rootElement.rightElementTree!=None):
+			arvoreBinaria_Search_For_father(element,rootElement.rightElementTree)
+		
 	
 
 

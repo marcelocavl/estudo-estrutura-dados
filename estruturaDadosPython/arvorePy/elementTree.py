@@ -34,4 +34,5 @@ class ElementTree:
 		if(self.rightElementTree==None and self.leftElementTree==None):
 			return True
 		return False
+	
 

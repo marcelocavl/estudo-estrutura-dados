@@ -38,25 +38,50 @@ class ArvoreBinaria:
 			self.arvoreBinaria_Print(elementRoot.leftElementTree)
 	
 	def arvoreBinaria_Delete_Node(self,element):
-		elementFather=arvoreBinaria_Search_For_father(element,self.rootElement)
-		arvoreBinaria_Delete(element,elementFather)
+		elementFather=self.arvoreBinaria_Search_For_father(element,self.rootElement)
+		print("O PAI TA ON!")
+		elementFather.elementTree_Print()
+		if(elementFather.rightElementTree!=None and element.elementTree_Get_Value()==elementFather.rightElementTree.elementTree_Get_Value()):
+			self.arvoreBinaria_Delete(elementFather.rightElementTree)
+			elementFather.rightElementTree=None
+			return
+
+		if(elementFather.leftElementTree!=None and element.elementTree_Get_Value()==elementFather.leftElementTree.elementTree_Get_Value()):
+			self.arvoreBinaria_Delete(elementFather.leftElementTree)
+			elementFather.leftElementTree=None
+			return
+
+
 		
-	def arvoreBinaria_Delete(self,element,rootElement):
+	def arvoreBinaria_Delete(self,rootElement):
+		if(rootElement.elementTree_Is_Leaf()):
+			rootElement=None
+			return;
+		if(rootElement.rightElementTree!=None):	
+			self.arvoreBinaria_Delete(rootElement.rightElementTree)
+
+		if(rootElement.leftElementTree!=None):	
+			self.arvoreBinaria_Delete(rootElement.leftElementTree)
+		rootElement=None
+		return
+
+
+
 		
-		
+					
 			
 		
 		
 
 	def arvoreBinaria_Search_For_father(self,element,rootElement):
-		if(element.elementTree_Get_Value()==rootElement.rightElementTree().elementTree_Get_Value()):
+		if(rootElement.rightElementTree!=None and element.elementTree_Get_Value()==rootElement.rightElementTree.elementTree_Get_Value()):
 			return rootElement
-		if(element.elementTree_Get_Value()==rootElement.leftElementTree().elementTree_Get_Value()):
+		if(rootElement.leftElementTree!=None and element.elementTree_Get_Value()==rootElement.leftElementTree.elementTree_Get_Value()):
 			return rootElement
-		if(element.elementTree_Get_Value()<rootElement.elementTree_Get_LeftElementTree() and rootElement.leftElementTree!=None):
-			arvoreBinaria_Search_For_father(element,rootElement.leftElementTree)
-		if(element.elementTree_Get_Value()>rootElement.elementTree_Get_LeftElementTree() and rootElement.rightElementTree!=None):
-			arvoreBinaria_Search_For_father(element,rootElement.rightElementTree)
+		if(element.elementTree_Get_Value()<rootElement.leftElementTree.elementTree_Get_Value() and rootElement.leftElementTree!=None):
+			return self.arvoreBinaria_Search_For_father(element,rootElement.leftElementTree)
+		if(element.elementTree_Get_Value()>rootElement.rightElementTree.elementTree_Get_Value() and rootElement.rightElementTree!=None):
+			return self.arvoreBinaria_Search_For_father(element,rootElement.rightElementTree)
 		
 	
 

@@ -18,3 +18,9 @@ element3=ElementTree(45)
 arvore.arvoreBinaria_Alocar(element3,arvore.rootElement)
 
 arvore.arvoreBinaria_Print(arvore.rootElement)
+element3=ElementTree(40)
+
+arvore.arvoreBinaria_Delete_Node(element3)
+print("OUTRO PRINT--------------------")
+
+arvore.arvoreBinaria_Print(arvore.rootElement)
